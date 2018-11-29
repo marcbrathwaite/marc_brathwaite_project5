@@ -40,18 +40,19 @@ class App extends Component {
     //Make API request and get all data for all currencies
     //Push to database
     ////////////////////COMMENTING out so as not to make multiple API calls///////////////
-    // axios.all(this.createAPIPromises(Object.keys(currencies)))
-    //   .then(res => {
-    //     res.forEach(elem => {
-    //       //Push data to database with current date
-    //       dbRef.child(elem.data.base).child('Base').set(elem.data.base)
-    //       dbRef.child(elem.data.base).child('Date').set(elem.data.date);
-    //       dbRef.child(elem.data.base).child('Rates').set(elem.data.rates);
-    //     })
-    //   })
+    axios.all(this.createAPIPromises(Object.keys(currencies)))
+      .then(res => {
+        res.forEach(elem => {
+          //Push data to database with current date
+          dbRef.child(elem.data.base).child('Base').set(elem.data.base)
+          dbRef.child(elem.data.base).child('Date').set(elem.data.date);
+          dbRef.child(elem.data.base).child('Rates').set(elem.data.rates);
+        })
+      })
 
     ////////////////////////Clear Database////////////////////////////////
     // dbRef.remove();
+
       //Set Base Currency to CAD
       this.setState({
         baseCurrency: 'CAD'
