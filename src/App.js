@@ -4,6 +4,7 @@ import axios from 'axios';
 import firebase from './firebase';
 import DashBoardBase from './DashBoardBase';
 import DashBoardSelect from './DashBoardSelect';
+import DashBoard from './DashBoard';
 import './App.css';
 
 //This is our reference to the root of our database
@@ -18,7 +19,8 @@ class App extends Component {
     super();
     this.state = {
       baseCurrency: '',
-      dashboardRates: {}
+      dashboardRates: {
+      }
     }
   }
   //Function to create array of promises for all of the available currencies
@@ -50,13 +52,26 @@ class App extends Component {
         })
       })
 
+    //Add Euro equal to 1 in database for euro object - API does not provide
+     dbRef.child('EUR').child('Rates').child('EUR').set(1);
+
     ////////////////////////Clear Database////////////////////////////////
     // dbRef.remove();
 
+      const CADref = firebase.database().ref('/CAD');
+      CADref.once('value').then(snapshot => {
+        //Update this.state.dashboardRate with rates With base as CAD
+        this.setState({
+          baseCurrency: 'CAD',
+          dashboardRates: snapshot.val()
+        })
+      });
+
+
       //Set Base Currency to CAD
-      this.setState({
-        baseCurrency: 'CAD'
-      })
+      // this.setState({
+      //   baseCurrency: 'CAD'
+      // })
 
     //////////////////////////THIS CODE possible could be deleted//////
     //Query database once
@@ -102,10 +117,14 @@ class App extends Component {
           <h1>CurrencyPal</h1>
         </header>
         <main>
-          <section className="App_dashboard">
-
-          <DashBoardBase symbol={this.state.baseCurrency} />
-          <DashBoardSelect handleBaseSelect={this.handleBaseSelect} />
+          <section className="App__dashboard">
+          <div className="App__dashboardSelectContainer wrapper">
+            <DashBoardBase symbol={this.state.baseCurrency} />
+            <DashBoardSelect handleBaseSelect={this.handleBaseSelect} />
+          </div>
+          <div className="wrapper">
+          <DashBoard dashboardRates={this.state.dashboardRates} />
+          </div>
 
           </section>
 

@@ -1,15 +1,20 @@
 import React from 'react';
+import flagicons from './flagicons';
+
+
+// import canada from './img/canada.png'
+
+
 
 const DashBoardBase = (props) => {
     return (
-        <React.Fragment>
-            <div>
-                Image here
+        <div className="App__dashboardBase">
+            <div className={`App__dashboardBase--Image flag-icon-background ${flagicons[props.symbol]}`}>
             </div>
-            <p>
+            <p className="App__dashboardBase--Text">
                {props.symbol}
             </p>
-        </React.Fragment>
+        </div>
     );
 }
 

@@ -7,7 +7,7 @@ const DashBoardSelect = (props) => {
         return (
             Object.entries(currencies).map(elem => {
                 return (
-                    elem[0] === 'CAD'? <option value={elem[0]} defaultValue="selected">{elem[1]}</option> : <option value={elem[0]}>{elem[1]}</option>
+                    elem[0] === 'CAD'? <option key={elem[0]} value={elem[0]} defaultValue="selected">{elem[1]}</option> : <option key={elem[0]} value={elem[0]}>{elem[1]}</option>
                 )
             })
         );
@@ -18,12 +18,12 @@ const DashBoardSelect = (props) => {
         // return optionHTML;
     }
     return (
-        <React.Fragment>
+        <div className="App__dashboardSelect">
             <label htmlFor="baseSelect">Select Base Currency</label>
             <select id="baseSelect" onChange={props.handleBaseSelect}>
             {displayDropDown()}
             </select>
-        </React.Fragment>
+        </div>
 
     );
 }

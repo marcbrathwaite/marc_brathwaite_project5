@@ -2,7 +2,7 @@ const currencies = {
     'CAD': 'CAD: Canadian Dollar',
     'BGN': 'BGN: Bulgurian Lev',
     'BRL': 'BRL: Brazilian Real',
-    'HUF': 'HUF: Hunhgarian Forint',
+    'HUF': 'HUF: Hungarian Forint',
     'DKK': 'DKK: Danish Krone',
     'JPY': 'JPY: Japanese Yen',
     'ILS': 'ILS: Israeli New Shekel',
