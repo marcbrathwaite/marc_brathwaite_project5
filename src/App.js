@@ -5,6 +5,7 @@ import firebase from './firebase';
 import DashBoardBase from './DashBoardBase';
 import DashBoardSelect from './DashBoardSelect';
 import DashBoard from './DashBoard';
+import ConversionForm from './ConversionForm';
 import './App.css';
 
 //This is our reference to the root of our database
@@ -20,6 +21,12 @@ class App extends Component {
     this.state = {
       baseCurrency: '',
       dashboardRates: {
+      },
+      amountInput: '',
+      fromChoice: '',
+      toChoice: '',
+      conversionRates: {
+
       }
     }
   }
@@ -50,10 +57,10 @@ class App extends Component {
           dbRef.child(elem.data.base).child('Date').set(elem.data.date);
           dbRef.child(elem.data.base).child('Rates').set(elem.data.rates);
         })
+        //Add Euro equal to 1 in database for euro object - API does not provide
+         dbRef.child('EUR').child('Rates').child('EUR').set(1);
       })
 
-    //Add Euro equal to 1 in database for euro object - API does not provide
-     dbRef.child('EUR').child('Rates').child('EUR').set(1);
 
     ////////////////////////Clear Database////////////////////////////////
     // dbRef.remove();
@@ -96,41 +103,47 @@ class App extends Component {
   }
 
   handleBaseSelect = (event) => {
-    //Change this.state.baseCurrency to value of dropdown box
+    
+    // Change this.state.baseCurrency to value of dropdown box
     this.setState({
       baseCurrency: event.target.value
-    })
-    //Pull rates from database and store in this.state.dashboardRates
-    const currRef = firebase.database().ref(`/${event.target.value}`);
-    currRef.once('value').then(snapshot => {
-      //Update this.state.dashboardRate with rates from database
-      this.setState({
-           dashboardRates: snapshot.val()
-         })
-    });
+    }, function() {
+      //Pull rates from database and store in this.state.dashboardRates
+      const currRef = firebase.database().ref(`/${this.state.baseCurrency}`);
+      currRef.once('value').then(snapshot => {
+        //Update this.state.dashboardRate with rates from database
+        this.setState({
+          dashboardRates: snapshot.val()
+        })
+      });
+  });
   }
 
   render() {
     return (
       <div className="App">
         <header className="App__header">
-          <h1>CurrencyPal</h1>
+            <h1>Header</h1>
         </header>
         <main>
-          <section className="App__dashboard">
-          <div className="App__dashboardSelectContainer wrapper">
-            <DashBoardBase symbol={this.state.baseCurrency} />
-            <DashBoardSelect handleBaseSelect={this.handleBaseSelect} />
+            <section className="App__dashboard">
+            <div className="App__dashboardSelectContainer wrapper">
+                <h2 className="App__dashboardHeading">ForEx Dashboard</h2>
+                <DashBoardBase symbol={this.state.baseCurrency} />
+                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency}/>
           </div>
           <div className="wrapper">
-          <DashBoard dashboardRates={this.state.dashboardRates} />
+              <DashBoard dashboardRates={this.state.dashboardRates} />
           </div>
-
+          </section>
+          <section className="App__Conversion">
+              <ConversionForm handleConversionChange={
+              this.handleConversionChange} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice}/>
+            
           </section>
 
         </main>
-
-        
+ 
       </div>
     );
   }

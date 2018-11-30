@@ -208,7 +208,7 @@ ul {
     justify-content: center;
     align-items: center; }
   .App__dashboard {
-    padding: 50px 0; }
+    padding: 25px 0; }
   .App__dashboardSelectContainer {
     display: flex;
     flex-direction: column;
@@ -233,6 +233,8 @@ ul {
   .App__dashboardSelect {
     margin-top: 10px;
     border: 1px solid black; }
+  .App__dashboardHeading {
+    margin-bottom: 20px; }
 
 p {
   font-size: 1.6rem; }

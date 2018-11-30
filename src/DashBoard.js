@@ -8,7 +8,7 @@ const DashBoard = (props) => {
     }
 
     const displayDate = () => {
-        return props.dashboardRates.Date ? `Date updated: ${props.dashboardRates.Date}` : "";
+        return props.dashboardRates.Date ? `Last Updated: ${props.dashboardRates.Date}` : "";
     }
     return(
         <React.Fragment>
