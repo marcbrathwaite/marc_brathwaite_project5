@@ -19,12 +19,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      baseCurrency: '',
+      baseCurrency: 'CAD',
       dashboardRates: {
       },
-      amountInput: '',
-      fromChoice: '',
-      toChoice: '',
+      amountInput: '0',
+      fromChoice: 'CAD',
+      toChoice: 'USD',
       conversionRates: {
 
       }
@@ -102,6 +102,7 @@ class App extends Component {
 
   }
 
+  //Executes when user selects a base currency
   handleBaseSelect = (event) => {
     
     // Change this.state.baseCurrency to value of dropdown box
@@ -119,6 +120,32 @@ class App extends Component {
   });
   }
 
+  //Executes when user made changes in dropdown box in conversion form
+  handleConversionSelect = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value
+    }, function() {
+      console.log(this.state.fromChoice, this.state.toChoice)
+    })
+  }
+
+
+//Executes when user made changes in input field in conversion form
+  handleConversionInput = (event) => {
+
+    this.setState({
+      [event.target.id]: event.target.value
+    }, function () {
+      console.log(this.state.amountInput)
+    })
+  }
+
+
+  //Executes when conversion form is submitted
+  handleConversionForm = () => {
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -130,15 +157,15 @@ class App extends Component {
             <div className="App__dashboardSelectContainer wrapper">
                 <h2 className="App__dashboardHeading">ForEx Dashboard</h2>
                 <DashBoardBase symbol={this.state.baseCurrency} />
-                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency}/>
+                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} />
           </div>
           <div className="wrapper">
               <DashBoard dashboardRates={this.state.dashboardRates} />
           </div>
           </section>
           <section className="App__Conversion">
-              <ConversionForm handleConversionChange={
-              this.handleConversionChange} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice}/>
+              <ConversionForm handleConversionSelect={
+              this.handleConversionSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} />
             
           </section>
 
