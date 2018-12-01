@@ -6,28 +6,23 @@ import DashBoardBase from './DashBoardBase';
 import DashBoardSelect from './DashBoardSelect';
 import DashBoard from './DashBoard';
 import ConversionForm from './ConversionForm';
+import Results from './Results';
 import './App.css';
 
-//This is our reference to the root of our database
+//This is the reference to the root of the database
 const dbRef = firebase.database().ref();
-
-//Get current date
-// const currentDate = `${(new Date()).getFullYear()}-${(new Date()).getMonth()+1}-${new Date().getDate()}`;
-
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       baseCurrency: 'CAD',
-      dashboardRates: {
-      },
-      amountInput: '0',
+      dashboardRates: {},
+      amountInput: '1',
       fromChoice: 'CAD',
       toChoice: 'USD',
-      conversionRates: {
-
-      }
+      conversionRates: {},
+      selectedRate: 0
     }
   }
   //Function to create array of promises for all of the available currencies
@@ -48,7 +43,6 @@ class App extends Component {
     
     //Make API request and get all data for all currencies
     //Push to database
-    ////////////////////COMMENTING out so as not to make multiple API calls///////////////
     axios.all(this.createAPIPromises(Object.keys(currencies)))
       .then(res => {
         res.forEach(elem => {
@@ -61,44 +55,24 @@ class App extends Component {
          dbRef.child('EUR').child('Rates').child('EUR').set(1);
       })
 
+      // const cadRef = firebase.database().ref('/CAD');
+      const cadRef = firebase.database().ref(`/${this.state.baseCurrency}`);
+      cadRef.once('value').then(snapshot => {
 
-    ////////////////////////Clear Database////////////////////////////////
-    // dbRef.remove();
-
-      const CADref = firebase.database().ref('/CAD');
-      CADref.once('value').then(snapshot => {
         //Update this.state.dashboardRate with rates With base as CAD
         this.setState({
-          baseCurrency: 'CAD',
-          dashboardRates: snapshot.val()
+          // baseCurrency: 'CAD',
+          dashboardRates: snapshot.val(),
+          conversionRates: snapshot.val(),
+        }, function() {
+          this.setState({
+            selectedRate: this.state.conversionRates.Rates[this.state.toChoice]
+          }, function() {
+            console.log(this.state.selectedRate);
+          })
         })
       });
 
-
-      //Set Base Currency to CAD
-      // this.setState({
-      //   baseCurrency: 'CAD'
-      // })
-
-    //////////////////////////THIS CODE possible could be deleted//////
-    //Query database once
-    // dbRef.once('value').then((snapshot) => {
-      
-      //Check if current date is key in database
-      //If it is not in dataase, make axios query to foreign exchange database, then store in firebase DB.
-      // if (!snapshot.child(currentDate).exists()) {
-        // const dateRef = dbRef.child(currentDate);
-        //Make axios request and get data from Currency API
-        // axios.all(this.createAPIPromises(currencies))
-        // .then(res => {
-          // res.forEach(elem =>{
-            //Push data to database with current date
-            // dateRef.child(elem.data.base).child(elem.data.date).set(elem.data.rates);
-          // })
-          
-        // });
-      // }
-    // })
 
   }
 
@@ -120,30 +94,47 @@ class App extends Component {
   });
   }
 
-  //Executes when user made changes in dropdown box in conversion form
-  handleConversionSelect = (event) => {
+  //Executes when user made changes in From dropdown box in conversion form
+  handleConversionFromSelect = (event) => {
     this.setState({
-      [event.target.id]: event.target.value
+      fromChoice: event.target.value
     }, function() {
-      console.log(this.state.fromChoice, this.state.toChoice)
+      //Query firebase and get rates corresponsing to from choice. Then set this.state.conversion rates to that object.
+      const fromRef = firebase.database().ref(`/${this.state.fromChoice}`);
+      fromRef.once('value').then(snapshot => {
+        this.setState({
+          conversionRates: snapshot.val()
+        }, function() {
+          this.setState({
+            selectedRate: this.state.conversionRates.Rates[this.state.toChoice]
+          })
+        })
+      });
+    })
+  }
+ //Executes when user made changes in To dropdown box in conversion form
+  handleConversionToSelect = (event) => {
+    this.setState({
+      toChoice: event.target.value
+    }, function() {
+      this.setState({
+        selectedRate: this.state.conversionRates.Rates[this.state.toChoice]
+      })
     })
   }
 
 
 //Executes when user made changes in input field in conversion form
   handleConversionInput = (event) => {
-
-    this.setState({
-      [event.target.id]: event.target.value
-    }, function () {
-      console.log(this.state.amountInput)
-    })
-  }
-
-
-  //Executes when conversion form is submitted
-  handleConversionForm = () => {
-
+    
+    //Only valid numbers will be added to state
+    if (/^([0-9]+)([.]{0,1})([0-9]*)$|^()$/g.test(event.target.value)) {
+      this.setState({
+        amountInput: event.target.value
+      }, function () {
+        console.log(this.state.amountInput)
+      })
+     }
   }
 
   render() {
@@ -155,7 +146,7 @@ class App extends Component {
         <main>
             <section className="App__dashboard">
             <div className="App__dashboardSelectContainer wrapper">
-                <h2 className="App__dashboardHeading">ForEx Dashboard</h2>
+                <h2 className="App__dashboardHeading">Dashboard</h2>
                 <DashBoardBase symbol={this.state.baseCurrency} />
                 <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} />
           </div>
@@ -164,13 +155,15 @@ class App extends Component {
           </div>
           </section>
           <section className="App__Conversion">
-              <ConversionForm handleConversionSelect={
-              this.handleConversionSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} />
-            
+              <ConversionForm handleConversionFromSelect={this.handleConversionFromSelect} handleConversionToSelect={
+              this.handleConversionToSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} /> 
+              <Results amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} selectedRate={this.state.selectedRate} />
           </section>
-
         </main>
- 
+        <footer>
+          <p>Copyright &copy; 2018<a href="http://www.brathworks.com/" target="_blank"> Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank"> Exchange rates API</a>
+          </p>
+        </footer>
       </div>
     );
   }

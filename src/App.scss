@@ -32,7 +32,7 @@ ul {
 
 .wrapper {
   max-width: 1280px;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -110,6 +110,7 @@ ul {
 
   &__ConversionForm {
     display: flex;
+    justify-content: space-between;
   }
 
   &__ConversionFormInput {
@@ -119,6 +120,15 @@ ul {
     justify-content: center;
     // border:1px solid black;
   }
+
+  &__Results {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
  
 }
 

@@ -38,6 +38,12 @@ const DashBoard = (props) => {
                 </p>
             </li>
             <li>
+                <DashBoardBase symbol="INR" />
+                <p className="App__dashboardDisplayText">
+                {displayRates('INR')}
+                </p>
+            </li>
+            <li>
                 <DashBoardBase symbol="CAD" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('CAD')}

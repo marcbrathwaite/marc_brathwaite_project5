@@ -3,7 +3,7 @@ import DisplayDropDown from './DisplayDropDown';
 
 const ConversionForm = (props) => {
     return (
-        <form action="" className="App__ConversionForm wrapper" onSubmit={props.handleConversionForm}>
+        <form action="" className="App__ConversionForm wrapper">
        
         <fieldset className="App__ConversionFormInput">
             <label htmlFor="amountInput">Amount</label>
@@ -11,7 +11,7 @@ const ConversionForm = (props) => {
         </fieldset>
         <fieldset className="App__ConversionFormInput">
             <label htmlFor="fromChoice">From</label>
-            <select value={props.fromChoice} id="fromChoice" onChange={props.handleConversionSelect}>
+            <select value={props.fromChoice} id="fromChoice" onChange={props.handleConversionFromSelect}>
             <DisplayDropDown ID="conversionFrom" />
             </select>
         </fieldset>
@@ -21,7 +21,7 @@ const ConversionForm = (props) => {
 
         <fieldset className="App__ConversionFormInput">
             <label htmlFor="toChoice">To</label>
-            <select value={props.toChoice} id="toChoice" onChange={props.handleConversionSelect}>
+            <select value={props.toChoice} id="toChoice" onChange={props.handleConversionToSelect}>
             <DisplayDropDown ID="conversionTo" />
             </select>
         </fieldset>

@@ -5,7 +5,7 @@ import currencies from './currencies';
 const DisplayDropDown = (props) => {
        return (
            
-               Object.keys(currencies).map(key => {
+               Object.keys(currencies).sort((a,b) => a>b).map(key => {
                    return (
                     <option key={`${props.ID}-${key}`} value={key}>{currencies[key]}</option>
                    )

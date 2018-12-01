@@ -1,11 +1,6 @@
 import React from 'react';
 import flagicons from './flagicons';
 
-
-// import canada from './img/canada.png'
-
-
-
 const DashBoardBase = (props) => {
     return (
         <div className="App__dashboardBase">
