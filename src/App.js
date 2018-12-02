@@ -143,18 +143,18 @@ class App extends Component {
         <header className="App__header">
             <h1>Header</h1>
         </header>
-        <main>
-            <section className="App__dashboard">
-            <div className="App__dashboardSelectContainer wrapper">
+        <main className="App__main">
+            <section className="App__dashboard wrapper">
+            <div className="App__dashboardSelectContainer">
                 <h2 className="App__dashboardHeading">Dashboard</h2>
                 <DashBoardBase symbol={this.state.baseCurrency} />
                 <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} />
           </div>
-          <div className="wrapper">
+          <div>
               <DashBoard dashboardRates={this.state.dashboardRates} />
           </div>
           </section>
-          <section className="App__Conversion">
+          <section className="App__Conversion wrapper">
               <ConversionForm handleConversionFromSelect={this.handleConversionFromSelect} handleConversionToSelect={
               this.handleConversionToSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} /> 
               <Results amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} selectedRate={this.state.selectedRate} />

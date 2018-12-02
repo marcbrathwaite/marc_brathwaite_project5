@@ -194,33 +194,75 @@ html {
 ul {
   list-style: none; }
 
+fieldset {
+  border: none; }
+
 .wrapper {
   max-width: 1280px;
-  width: 70%;
+  width: 90%;
   margin: 0 auto; }
+
+h1,
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  color: #f1f1f1;
+  text-transform: uppercase; }
+
+h2 {
+  font-size: 4rem; }
+
+p, label {
+  font-family: 'Ubuntu', sans-serif;
+  text-transform: uppercase;
+  color: #f1f1f1;
+  font-size: 1.8rem;
+  font-weight: bold; }
+
+input, select {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  color: #f1f1f1;
+  font-size: 1.8rem;
+  border: none;
+  background: #091540;
+  border-radius: 5px;
+  padding: 10px 15px; }
+
+select {
+  appearance: none;
+  background-image: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
+  background-repeat: no-repeat;
+  background-position: 95% center; }
 
 .App__header {
   text-align: center;
   height: 50vh;
-  background: beige;
   display: flex;
   justify-content: center;
   align-items: center; }
 
+.App__main {
+  background: linear-gradient(to bottom, #091540, #f1f1f1);
+  padding: 50px 0; }
+
 .App__dashboard {
-  padding: 25px 0; }
+  padding: 50px;
+  background: #0C3159;
+  margin-bottom: 50px;
+  border-radius: 20px; }
 
 .App__dashboardSelectContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px; }
+  margin-bottom: 40px; }
 
 .App__dashboardDisplay {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px; }
+  margin-bottom: 40px; }
 
 .App__dashboardDisplayText {
   text-align: center; }
@@ -245,15 +287,20 @@ ul {
   text-align: center; }
 
 .App__dashboardSelect {
-  margin-top: 10px;
-  border: 1px solid black; }
+  margin-top: 30px; }
+
+.App__baseSelectDropdown {
+  margin-left: 20px; }
 
 .App__dashboardHeading {
   text-align: center;
   margin-bottom: 20px; }
 
 .App__Conversion {
-  padding: 25px 0; }
+  padding: 50px;
+  background: #0C3159;
+  margin-bottom: 30px;
+  border-radius: 20px; }
 
 .App__ConversionForm {
   display: flex;
@@ -271,6 +318,3 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-
-p {
-  font-size: 1.6rem; }
