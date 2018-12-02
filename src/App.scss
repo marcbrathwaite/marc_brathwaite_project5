@@ -72,7 +72,7 @@ input, select {
   color: #093637;
   font-size: 1.8rem;
   border:none;
-  // background: $background-color1;
+  background: white;
   border-radius: 5px;
   padding: 15px 50px 15px 10px;
   // text-align: center;
@@ -102,9 +102,6 @@ select {
 
   &__dashboard {
     padding: 30px;
-    // background: linear-gradient(to bottom, $background-color2, $text-color);
-    // background: linear-gradient(to right, #6190e8, #a7bfe8);
-    // background: linear-gradient(to bottom, #44a08d, #093637);
     background: linear-gradient(to bottom, #4E9193, #07242D);
     
     margin-bottom: 50px;
@@ -327,6 +324,10 @@ select {
 
 @media (max-width: 900px) {
 
+  .wrapper {
+    width: 95%;
+  }
+
     .App__dashboardDisplay {
       flex-wrap: wrap;
     }
@@ -354,9 +355,6 @@ select {
     padding: 15px;
   }
 
-  .wrapper {
-    width: 95%;
-  }
 }
 
 @media (max-width: 650px) {

@@ -226,6 +226,7 @@ input, select {
   color: #093637;
   font-size: 1.8rem;
   border: none;
+  background: white;
   border-radius: 5px;
   padding: 15px 50px 15px 10px; }
 
@@ -405,6 +406,8 @@ select {
     background-position: 98% center; } }
 
 @media (max-width: 900px) {
+  .wrapper {
+    width: 95%; }
   .App__dashboardDisplay {
     flex-wrap: wrap; }
   .App__dashboardDisplayList {
@@ -419,9 +422,7 @@ select {
   .App__dashboard {
     padding: 15px; }
   .App__conversion {
-    padding: 15px; }
-  .wrapper {
-    width: 95%; } }
+    padding: 15px; } }
 
 @media (max-width: 650px) {
   .App__dashboardBaseContainer {
