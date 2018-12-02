@@ -160,7 +160,7 @@ class App extends Component {
           </section>
         </main>
         <footer className="App__footer">
-          <p className="App__footerText">Copyright &copy; 2018 <a href="http://www.brathworks.com/" target="_blank">Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank">Exchange rates API</a> and Firebase
+          <p className="App__footerText">Copyright &copy; 2018 <a href="http://www.brathworks.com/" target="_blank" rel="noopener noreferrer">Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank" rel="noopener noreferrer">Exchange rates API</a> and Firebase
           </p>
         </footer>
       </div>
