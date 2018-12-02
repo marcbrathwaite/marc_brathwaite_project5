@@ -206,21 +206,26 @@ h1,
 h2 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
-  color: #fff;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+  color: white; }
+
+h1 {
+  font-size: 5rem; }
 
 h2 {
-  font-size: 6rem; }
+  font-size: 3.5rem; }
 
-p, label {
+p,
+label {
   font-family: 'Ubuntu', sans-serif;
   text-transform: uppercase;
-  color: #fff;
+  color: white;
   font-size: 1.8rem;
   font-weight: bold; }
 
-input, select {
+input,
+select {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   color: #093637;
@@ -238,10 +243,11 @@ select {
 
 .App__header {
   text-align: center;
-  height: 20vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  background: #07242D; }
 
 .App__main {
   background: linear-gradient(to bottom, #9DD9D2, #426866);
@@ -313,7 +319,6 @@ select {
 
 .App__baseSelectLabel {
   margin-bottom: 20px;
-  text-decoration: underline;
   text-align: center; }
 
 .App__dashboardHeading, .App__conversionHeading {
@@ -400,7 +405,8 @@ select {
     margin-right: 0; }
   .App__conversionResults {
     padding: 100px 0; }
-  input, select {
+  input,
+  select {
     width: 100%; }
   select {
     background-position: 98% center; } }
@@ -433,8 +439,8 @@ select {
     font-size: 2.5rem; } }
 
 @media (max-width: 450px) {
-  h2 {
-    font-size: 4rem; }
+  h1 {
+    font-size: 4.5rem; }
   .App__dashboardDisplayList {
     width: 50%;
     margin-bottom: 30px; }
@@ -442,9 +448,13 @@ select {
       margin-bottom: 0; }
   .App__dashboardBaseContainer {
     padding: 15px 20px; }
-  p, label, select, input {
+  p,
+  label,
+  select,
+  input {
     font-size: 1.6rem; }
-  input, select {
+  input,
+  select {
     padding: 15px 30px 15px 10px; }
   .App__conversionResultsTo {
     font-size: 2.2rem; } }
