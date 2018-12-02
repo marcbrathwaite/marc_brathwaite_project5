@@ -206,28 +206,28 @@ h1,
 h2 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
-  color: #f1f1f1;
-  text-transform: uppercase; }
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center; }
 
 h2 {
-  font-size: 4rem; }
+  font-size: 6rem; }
 
 p, label {
   font-family: 'Ubuntu', sans-serif;
   text-transform: uppercase;
-  color: #f1f1f1;
+  color: #fff;
   font-size: 1.8rem;
   font-weight: bold; }
 
 input, select {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
-  color: #f1f1f1;
+  color: #093637;
   font-size: 1.8rem;
   border: none;
-  background: #091540;
   border-radius: 5px;
-  padding: 10px 15px; }
+  padding: 15px 50px 15px 10px; }
 
 select {
   appearance: none;
@@ -237,18 +237,18 @@ select {
 
 .App__header {
   text-align: center;
-  height: 50vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center; }
 
 .App__main {
-  background: linear-gradient(to bottom, #091540, #f1f1f1);
-  padding: 50px 0; }
+  background: linear-gradient(to bottom, #9DD9D2, #426866);
+  padding: 30px 0; }
 
 .App__dashboard {
-  padding: 50px;
-  background: #0C3159;
+  padding: 30px;
+  background: linear-gradient(to bottom, #4E9193, #07242D);
   margin-bottom: 50px;
   border-radius: 20px; }
 
@@ -259,10 +259,27 @@ select {
   align-items: center;
   margin-bottom: 40px; }
 
+.App__dashboardBaseContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 90px;
+  background: linear-gradient(to bottom, #213E3F, #07242D);
+  border-radius: 10px; }
+
+.App__dashboardDisplayContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  padding: 25px 0; }
+
 .App__dashboardDisplay {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  padding: 25px 0; }
 
 .App__dashboardDisplayText {
   text-align: center; }
@@ -276,7 +293,7 @@ select {
   justify-content: center;
   align-items: center; }
 
-.App__dashboardBaseImage {
+.App__dashboardBaseImage, .App__conversionImage {
   margin-bottom: 5px;
   height: 75px;
   width: 100px;
@@ -287,34 +304,150 @@ select {
   text-align: center; }
 
 .App__dashboardSelect {
-  margin-top: 30px; }
-
-.App__baseSelectDropdown {
-  margin-left: 20px; }
-
-.App__dashboardHeading {
-  text-align: center;
-  margin-bottom: 20px; }
-
-.App__Conversion {
-  padding: 50px;
-  background: #0C3159;
-  margin-bottom: 30px;
-  border-radius: 20px; }
-
-.App__ConversionForm {
-  display: flex;
-  justify-content: space-between; }
-
-.App__ConversionFormInput {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 30px; }
 
-.App__Results {
-  padding: 25px 0;
+.App__baseSelectLabel {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-align: center; }
+
+.App__dashboardHeading, .App__conversionHeading {
+  text-align: center;
+  margin-bottom: 35px; }
+
+.App__conversion {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  background: linear-gradient(to top, #4E9193, #07242D); }
+
+.App__conversionFormResults {
+  display: flex; }
+
+.App__conversionForm {
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px; }
+
+.App__conversionFormInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px; }
+
+.App__conversionFormLabel {
+  margin-top: 5px;
+  padding-left: 10px;
+  align-self: flex-start;
+  font-size: 1.6rem;
+  margin-bottom: 5px; }
+
+.App__conversionImage {
+  height: 56px;
+  width: 75px;
+  align-self: center; }
+
+.App__conversionResults {
+  flex: 3 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to bottom, #213E3F, #07242D);
+  border-radius: 20px; }
+
+.App__conversionResultsFrom {
+  margin-bottom: 10px;
+  text-align: center; }
+
+.App__conversionResultsTo {
+  font-size: 4rem;
+  text-align: center;
+  word-wrap: break-word; }
+
+.App__conversionResultsTo--Small {
+  font-size: 2rem;
+  text-align: center; }
+
+.App__conversionResultsRate {
+  font-size: 1.6rem;
+  margin-top: 25px;
+  text-align: center; }
+
+.App__footer {
+  padding: 10px 0;
+  background: #07242D; }
+
+.App__footerText {
+  text-align: center;
+  color: white;
+  text-transform: none; }
+  .App__footerText a {
+    text-decoration: underline;
+    color: white; }
+
+@media (max-width: 1200px) {
+  .App__conversionFormResults {
+    flex-direction: column; }
+  .App__conversionForm {
+    margin-right: 0; }
+  .App__conversionResults {
+    padding: 100px 0; }
+  input, select {
+    width: 100%; }
+  select {
+    background-position: 98% center; } }
+
+@media (max-width: 900px) {
+  .App__dashboardDisplay {
+    flex-wrap: wrap; }
+  .App__dashboardDisplayList {
+    width: 33.33%;
+    margin-bottom: 30px; }
+    .App__dashboardDisplayList:nth-of-type(n+4) {
+      margin-bottom: 0; } }
+
+@media (max-width: 750px) {
+  .App__conversionResultsTo {
+    font-size: 3rem; }
+  .App__dashboard {
+    padding: 15px; }
+  .App__conversion {
+    padding: 15px; }
+  .wrapper {
+    width: 95%; } }
+
+@media (max-width: 650px) {
+  .App__dashboardBaseContainer {
+    padding: 30px 40px; } }
+
+@media (max-width: 550px) {
+  .App__conversionResultsTo {
+    font-size: 2.5rem; } }
+
+@media (max-width: 450px) {
+  h2 {
+    font-size: 4rem; }
+  .App__dashboardDisplayList {
+    width: 50%;
+    margin-bottom: 30px; }
+    .App__dashboardDisplayList:nth-of-type(n+5) {
+      margin-bottom: 0; }
+  .App__dashboardBaseContainer {
+    padding: 15px 20px; }
+  p, label, select, input {
+    font-size: 1.6rem; }
+  input, select {
+    padding: 15px 30px 15px 10px; }
+  .App__conversionResultsTo {
+    font-size: 2.2rem; } }
+
+@media (max-width: 400px) {
+  .App__conversionResultsTo {
+    font-size: 2rem; } }

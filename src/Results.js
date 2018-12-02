@@ -6,9 +6,12 @@ const Results = (props) => {
         return (props.amountInput == 0 || !props.amountInput) ? 0 : (parseFloat(props.amountInput) * props.selectedRate).toFixed(6);
     }
     return (
-        <div className="App__Results">
-            <p>{!props.amountInput ? 0 : props.amountInput} {props.fromChoice} =</p>
-            <p>{calculateResult()} <span>{props.toChoice}</span></p>
+        <div className="App__conversionResults">
+            <p className="App__conversionResultsFrom">   {!props.amountInput ? 0 : props.amountInput} {props.fromChoice} =</p>
+            <p className="App__conversionResultsTo">{calculateResult()} <span className="App__conversionResultsTo--Small">{props.toChoice}</span></p>
+            <p className="App__conversionResultsRate">
+              1 {props.fromChoice} = {props.selectedRate} {props.toChoice}
+            </p>
         </div>
     );
 }

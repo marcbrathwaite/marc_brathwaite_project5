@@ -13,37 +13,37 @@ const DashBoard = (props) => {
     return(
         <React.Fragment>
         <ul className="App__dashboardDisplay">
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="USD" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('USD')}
                 </p>
             </li>
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="EUR" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('EUR')}
                 </p>
             </li>
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="GBP" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('GBP')}
                 </p>
             </li>
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="MXN" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('MXN')}
                 </p>
             </li>
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="INR" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('INR')}
                 </p>
             </li>
-            <li>
+            <li className="App__dashboardDisplayList">
                 <DashBoardBase symbol="CAD" />
                 <p className="App__dashboardDisplayText">
                 {displayRates('CAD')}

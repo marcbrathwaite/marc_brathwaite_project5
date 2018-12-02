@@ -145,23 +145,29 @@ class App extends Component {
         </header>
         <main className="App__main">
             <section className="App__dashboard wrapper">
-            <div className="App__dashboardSelectContainer">
+          <div className="App__dashboardSelectContainer">
                 <h2 className="App__dashboardHeading">Dashboard</h2>
+                <div className="App__dashboardBaseContainer">
                 <DashBoardBase symbol={this.state.baseCurrency} />
-                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} />
+                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} /> 
+                </div>
           </div>
-          <div>
+          <div className="App__dashboardDisplayContainer">
+            <p className="App__dashboardDisplayText">1 {this.state.baseCurrency} = </p>
               <DashBoard dashboardRates={this.state.dashboardRates} />
           </div>
           </section>
-          <section className="App__Conversion wrapper">
+          <section className="App__conversion wrapper">
+          <h2 className="App__conversionHeading">Converter</h2>
+          <div className="App__conversionFormResults">
               <ConversionForm handleConversionFromSelect={this.handleConversionFromSelect} handleConversionToSelect={
               this.handleConversionToSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} /> 
               <Results amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} selectedRate={this.state.selectedRate} />
+          </div>
           </section>
         </main>
-        <footer>
-          <p>Copyright &copy; 2018<a href="http://www.brathworks.com/" target="_blank"> Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank"> Exchange rates API</a>
+        <footer className="App__footer">
+          <p className="App__footerText">Copyright &copy; 2018 <a href="http://www.brathworks.com/" target="_blank">Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank">Exchange rates API</a> and Firebase
           </p>
         </footer>
       </div>
