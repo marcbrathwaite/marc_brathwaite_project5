@@ -9,7 +9,7 @@ const DashBoardSelect = (props) => {
       <DisplayDropDown ID="dashboardSelect" />
       </select>
     </div>
-    );
+  );
 }
 
 export default DashBoardSelect;

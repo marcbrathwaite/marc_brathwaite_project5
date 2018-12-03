@@ -14,7 +14,7 @@ const Results = (props) => {
               1 {props.fromChoice} = {props.selectedRate} {props.toChoice}
       </p>
     </div>
-    );
+  );
 }
 
 export default Results;

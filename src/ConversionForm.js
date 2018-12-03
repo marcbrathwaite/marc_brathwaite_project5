@@ -24,7 +24,7 @@ const ConversionForm = (props) => {
         </select>
       </fieldset>    
     </form>
-    );
+  );
 }
 
 export default ConversionForm;

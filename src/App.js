@@ -38,7 +38,6 @@ class App extends Component {
     });
   }
 
-
   componentDidMount() {
 
     //Make API request and get all data for all currencies
@@ -55,13 +54,11 @@ class App extends Component {
         dbRef.child('EUR').child('Rates').child('EUR').set(1);
       })
 
-    // const cadRef = firebase.database().ref('/CAD');
     const cadRef = firebase.database().ref(`/${this.state.baseCurrency}`);
     cadRef.once('value').then(snapshot => {
 
       //Update this.state.dashboardRate with rates With base as CAD
       this.setState({
-        // baseCurrency: 'CAD',
         dashboardRates: snapshot.val(),
         conversionRates: snapshot.val(),
       }, function () {
