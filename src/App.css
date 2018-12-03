@@ -448,6 +448,8 @@ select {
       margin-bottom: 0; }
   .App__dashboardBaseContainer {
     padding: 15px 20px; }
+  .App__dashboardDisplayContainer {
+    border-bottom: none; }
   p,
   label,
   select,
