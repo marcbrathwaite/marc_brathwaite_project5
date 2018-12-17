@@ -131,7 +131,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App__header">
-          <h1>Currency Converter</h1>
+            <h1>Currency Converter</h1>
         </header>
         <main className="App__main">
           <section className="App__dashboard wrapper">

@@ -61,11 +61,11 @@ h2 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 3.5rem;
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 p,
@@ -99,7 +99,7 @@ select {
 .App {
   &__header {
     text-align: center;
-    height: 30vh;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
