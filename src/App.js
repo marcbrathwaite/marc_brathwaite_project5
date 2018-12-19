@@ -128,40 +128,50 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <header className="App__header">
+          <div className="wrapper App__headerContainer">
             <h1>Currency Converter</h1>
+            <a href="#converter" className="App__headerLink">
+            <i class="fas fa-arrow-circle-down App__headerLinkItem" />
+              <span className="App__headerLinkItem">Converter</span>
+            </a>
+          </div>
         </header>
         <main className="App__main">
           <section className="App__dashboard wrapper">
             <div className="App__dashboardSelectContainer">
               <h2 className="App__dashboardHeading">Dashboard</h2>
-                <div className="App__dashboardBaseContainer">
+              <div className="App__dashboardBaseContainer">
                 <DashBoardBase symbol={this.state.baseCurrency} />
-                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} /> 
-                </div>
-          </div>
-          <div className="App__dashboardDisplayContainer">
-            <p className="App__dashboardDisplayText">1 {this.state.baseCurrency} = </p>
-            <DashBoard dashboardRates={this.state.dashboardRates} />
-          </div>
+                <DashBoardSelect handleBaseSelect={this.handleBaseSelect} baseCurrency={this.state.baseCurrency} />
+              </div>
+            </div>
+            <div className="App__dashboardDisplayContainer">
+              <p className="App__dashboardDisplayText">
+                1 {this.state.baseCurrency} ={" "}
+              </p>
+              <DashBoard dashboardRates={this.state.dashboardRates} />
+            </div>
           </section>
-          <section className="App__conversion wrapper">
+          <section id="converter" className="App__conversion wrapper">
             <h2 className="App__conversionHeading">Converter</h2>
             <div className="App__conversionFormResults">
-              <ConversionForm handleConversionFromSelect={this.handleConversionFromSelect} handleConversionToSelect={
-              this.handleConversionToSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} /> 
+              <ConversionForm handleConversionFromSelect={this.handleConversionFromSelect} handleConversionToSelect={this.handleConversionToSelect} handleConversionInput={this.handleConversionInput} handleConversionForm={this.handleConversionForm} amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} />
               <Results amountInput={this.state.amountInput} fromChoice={this.state.fromChoice} toChoice={this.state.toChoice} selectedRate={this.state.selectedRate} />
-          </div>
+            </div>
           </section>
         </main>
         <footer className="App__footer">
-          <p className="App__footerText">Copyright &copy; 2018 <a href="http://www.brathworks.com/" target="_blank" rel="noopener noreferrer">Brathworks</a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank" rel="noopener noreferrer">Exchange rates API</a> and Firebase
+          <p className="App__footerText">
+            Copyright &copy; 2018 <a href="http://www.brathworks.com/" target="_blank" rel="noopener noreferrer">
+              Brathworks
+            </a> | Powered by the <a href="https://exchangeratesapi.io/" target="_blank" rel="noopener noreferrer">
+              Exchange rates API
+            </a> and Firebase
           </p>
         </footer>
-      </div>
-    );
+      </div>;
   }
 }
 
